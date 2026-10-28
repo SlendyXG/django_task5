@@ -13,6 +13,8 @@ def fill_owner_pure_phone(apps, schema_editor):
             continue
         if not phonenumbers.is_valid_number(parsed):
             continue
+        if parsed.country_code != 7:
+            continue
         flat.owner_pure_phone = parsed
         flat.save(update_fields=['owner_pure_phone'])
 
@@ -20,7 +22,6 @@ def fill_owner_pure_phone(apps, schema_editor):
 def rollback(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Flat.objects.update(owner_pure_phone=None)
-
 
 
 class Migration(migrations.Migration):
