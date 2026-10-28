@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Complaint, Flat
+from .models import Complaint, Flat, Owner
 
 
 @admin.register(Flat)
@@ -19,3 +19,9 @@ class FlatAdmin(admin.ModelAdmin):
 @admin.register(Complaint)
 class ComplaintAdmin(admin.ModelAdmin):
     raw_id_fields = ['user', 'flat']
+
+
+@admin.register(Owner)
+class OwnerAdmin(admin.ModelAdmin):
+    raw_id_fields = ['flats']
+    fields = ['full_name', 'phone', 'phone_pure', 'flats']
