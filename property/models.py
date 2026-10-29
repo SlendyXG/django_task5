@@ -5,8 +5,6 @@ from django.utils import timezone
 
 
 class Flat(models.Model):
-    owner = models.CharField('ФИО владельца', max_length=200)
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     new_building = models.BooleanField(
         'Новостройка',
         null=True,
@@ -17,11 +15,6 @@ class Flat(models.Model):
         verbose_name='Кто лайкнул',
         related_name='liked_flats',
         blank=True)
-    owner_pure_phone = PhoneNumberField(
-        'Нормализованный номер владельца',
-        null=True,
-        blank=True,
-        db_index=True)
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
