@@ -84,7 +84,7 @@ class Owner(models.Model):
 
 
 class Complaint(models.Model):
-    user = models.ForeignKey(
+    who_complained = models.ForeignKey(
         User,
         verbose_name='Кто жаловался',
         on_delete=models.CASCADE,
@@ -99,4 +99,4 @@ class Complaint(models.Model):
         blank=True)
 
     def __str__(self):
-        return f'{self.user} — {self.flat}'
+        return f'{self.who_complained} — {self.flat}'
